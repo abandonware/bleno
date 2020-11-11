@@ -33,7 +33,7 @@ If you're using [noble](https://github.com/sandeepmistry/noble) *and* bleno at t
 #### Ubuntu/Debian/Raspbian
 
 ```sh
-sudo apt-get install bluetooth bluez libbluetooth-dev libudev-dev
+sudo apt-get install bluetooth bluez libbluetooth-dev libudev-dev libusb-1.0-0-dev
 ```
 
 Make sure ```node``` is on your path, if it's not, some options:
@@ -80,7 +80,7 @@ Make sure you have read and write permissions on the ```/dev/usb/*``` device tha
 ## Install
 
 ```sh
-npm install bleno
+npm install bleno@npm:@abandonware/bleno
 ```
 
 ## Usage
