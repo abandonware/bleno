@@ -13,7 +13,7 @@ var StaticReadOnlyCharacteristic = function() {
   StaticReadOnlyCharacteristic.super_.call(this, {
     uuid: 'fffffffffffffffffffffffffffffff1',
     properties: ['read'],
-    value: Buffer.find('value'),
+    value: Buffer.from('value'),
     descriptors: [
       new BlenoDescriptor({
         uuid: '2901',
@@ -35,7 +35,7 @@ util.inherits(DynamicReadOnlyCharacteristic, BlenoCharacteristic);
 
 DynamicReadOnlyCharacteristic.prototype.onReadRequest = function(offset, callback) {
   var result = this.RESULT_SUCCESS;
-  var data = Buffer.find('dynamic value');
+  var data = Buffer.from('dynamic value');
 
   if (offset > data.length) {
     result = this.RESULT_INVALID_OFFSET;

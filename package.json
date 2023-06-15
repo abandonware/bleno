@@ -35,20 +35,20 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "jshint": "~2.12.0",
+    "jshint": "~2.13.6",
     "should": "~13.2.3",
-    "mocha": "~8.3.2",
+    "mocha": "~10.2.0",
     "node-blink1": "~0.5.1"
   },
   "dependencies": {
     "debug": "^4.3.1",
     "napi-thread-safe-callback": "0.0.6",
-    "node-addon-api": "^3.1.0"
+    "node-addon-api": "^6.1.0"
   },
   "optionalDependencies": {
-    "@abandonware/bluetooth-hci-socket": "^0.5.3-7",
-    "bplist-parser": "0.3.0",
-    "xpc-connect": "^2.0.0"
+    "@abandonware/bluetooth-hci-socket": "^0.5.3-10",
+    "bplist-parser": "0.3.2",
+    "xpc-connect": "^2.0.3"
   },
   "types": "./index.d.ts"
 }
