@@ -36,7 +36,7 @@ C3DynamicReadOnlyCharacteristic.prototype.onReadRequest = function(offset, callb
 
 var C1WriteOnlyCharacteristic = function() {
   C1WriteOnlyCharacteristic.super_.call(this, {
-    uuid: '18EE2EF5-263D-4559-959F-4F9C429F9D12',
+    uuid: '18EE2EF5-263D-4559-959F-4F9C429F9D11',
     properties: ['write']
   });
 };
