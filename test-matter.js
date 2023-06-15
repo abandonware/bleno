@@ -87,7 +87,7 @@ C2IndicateOnlyCharacteristic.prototype.onIndicate = function() {
 
 function MatterService() {
   MatterService.super_.call(this, {
-    uuid: '0000FFF6-0000-1000-8000-00805F9B34FB', // 0xfff6 ?!
+    uuid: 'fff6', // 0xfff6 ?!
     characteristics: [
       new C3DynamicReadOnlyCharacteristic(),
       new C1WriteOnlyCharacteristic(),
