@@ -7,6 +7,9 @@ var BlenoPrimaryService = bleno.PrimaryService;
 var BlenoCharacteristic = bleno.Characteristic;
 var BlenoDescriptor = bleno.Descriptor;
 
+let handshakeDone = false;
+let C2Callback = null;
+
 console.log('bleno');
 
 var C3DynamicReadOnlyCharacteristic = function() {
@@ -46,6 +49,12 @@ util.inherits(C1WriteOnlyCharacteristic, BlenoCharacteristic);
 C1WriteOnlyCharacteristic.prototype.onWriteRequest = function(data, offset, withoutResponse, callback) {
   console.log('C1WriteOnlyCharacteristic write request: ' + data.toString('hex') + ' ' + offset + ' ' + withoutResponse);
 
+  if (data[0] === 0x65 && data[1] === 0x6c) {
+    handshakeDone = true;
+    callback();
+    return;
+  }
+
   callback(this.RESULT_SUCCESS);
 };
 
@@ -59,9 +68,14 @@ var C2IndicateOnlyCharacteristic = function() {
 util.inherits(C2IndicateOnlyCharacteristic, BlenoCharacteristic);
 
 C2IndicateOnlyCharacteristic.prototype.onSubscribe = function(maxValueSize, updateValueCallback) {
-  console.log('C2IndicateOnlyCharacteristic subscribe');
+  console.log('C2IndicateOnlyCharacteristic subscribe ' + maxValueSize);
 
-  this.counter = 0;
+  if (handshakeDone) {
+    C2Callback = updateValueCallback;
+    console.log('C2IndicateOnlyCharacteristic handshake response');
+    updateValueCallback(Buffer.from("656c04000106", "hex"));
+  }
+  /*this.counter = 0;
   this.changeInterval = setInterval(function() {
     var data = Buffer.alloc(4);
     data.writeUInt32LE(this.counter, 0);
@@ -69,7 +83,7 @@ C2IndicateOnlyCharacteristic.prototype.onSubscribe = function(maxValueSize, upda
     console.log('C2IndicateOnlyCharacteristic update value: ' + this.counter);
     updateValueCallback(data);
     this.counter++;
-  }.bind(this), 1000);
+  }.bind(this), 1000);*/
 };
 
 C2IndicateOnlyCharacteristic.prototype.onUnsubscribe = function() {
