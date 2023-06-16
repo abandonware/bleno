@@ -11,20 +11,20 @@ on:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        os: [ubuntu-20.04, ubuntu-latest, macos-latest, windows-2019]
+        node: [14, 16, 18]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node }}
+      uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: ${{ matrix.node }}
     - name: Install system dependencies
+      if: ${{ matrix.os == 'ubuntu-latest' }}
       run: |
         sudo apt -qq update
         sudo apt install -y libusb-1.0-0-dev libudev-dev
