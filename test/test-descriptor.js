@@ -1,15 +1,15 @@
 /* jshint mocha: true */
 
-var should = require('should');
+const should = require('should');
 
-var Descriptor = require('../lib/descriptor');
+const Descriptor = require('../lib/descriptor');
 
 describe('Descriptor', function() {
-  var mockUuid = 'mockuuid';
-  var mockValue = Buffer.from('mock value');
+  const mockUuid = 'mockuuid';
+  const mockValue = Buffer.from('mock value');
 
   it('should create with uuid option', function() {
-    var descriptor = new Descriptor({
+    const descriptor = new Descriptor({
       uuid: mockUuid
     });
 
@@ -20,7 +20,7 @@ describe('Descriptor', function() {
   });
 
   it('should create with value option', function() {
-    var descriptor = new Descriptor({
+    const descriptor = new Descriptor({
       value: mockValue
     });
 
@@ -29,7 +29,7 @@ describe('Descriptor', function() {
 
   describe('toString', function() {
     it('should hex buffer value', function() {
-      var descriptor = new Descriptor({
+      const descriptor = new Descriptor({
         uuid: mockUuid,
         value: mockValue
       });
@@ -38,7 +38,7 @@ describe('Descriptor', function() {
     });
 
     it('should leave non-buffer value alone', function() {
-      var descriptor = new Descriptor({
+      const descriptor = new Descriptor({
         uuid: mockUuid,
         value: 'mock value'
       });

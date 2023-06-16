@@ -1,4 +1,4 @@
-var bleno = require('./index');
+const bleno = require('./index');
 
 console.log('bleno - iBeacon');
 

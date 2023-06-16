@@ -1,28 +1,28 @@
 /* jshint mocha: true */
 
-var should = require('should');
+const should = require('should');
 
-var Characteristic = require('../lib/characteristic');
+const Characteristic = require('../lib/characteristic');
 
 describe('Characteristic', function() {
-  var mockUuid = 'mockuuid';
-  var mockProperties = ['property1', 'property2', 'property3'];
-  var mockSecure = ['secure1', 'secure2', 'secure3'];
-  var mockValue = Buffer.from('mock value');
-  var mockDescriptors = [{}, {}, {}];
+  const mockUuid = 'mockuuid';
+  const mockProperties = ['property1', 'property2', 'property3'];
+  const mockSecure = ['secure1', 'secure2', 'secure3'];
+  const mockValue = Buffer.from('mock value');
+  const mockDescriptors = [{}, {}, {}];
 
-  var mockOnReadRequest = function() {};
-  var mockOnWriteRequest = function() {};
-  var mockOnSubscribe = function() {};
-  var mockOnUnsubscribe = function() {};
-  var mockOnNotify = function() {};
-  var mockOnIndicate = function() {};
+  const mockOnReadRequest = function() {};
+  const mockOnWriteRequest = function() {};
+  const mockOnSubscribe = function() {};
+  const mockOnUnsubscribe = function() {};
+  const mockOnNotify = function() {};
+  const mockOnIndicate = function() {};
 
-  var mockMaxValueSize = 20;
-  var mockUpdateValueCallback = function() {};
+  const mockMaxValueSize = 20;
+  const mockUpdateValueCallback = function() {};
 
   it('should create with uuid option', function() {
-    var characteristic = new Characteristic({
+    const characteristic = new Characteristic({
       uuid: mockUuid
     });
 
@@ -41,7 +41,7 @@ describe('Characteristic', function() {
   });
 
   it('should create with properties option', function() {
-    var characteristic = new Characteristic({
+    const characteristic = new Characteristic({
       properties: mockProperties
     });
 
@@ -49,7 +49,7 @@ describe('Characteristic', function() {
   });
 
   it('should create with secure option', function() {
-    var characteristic = new Characteristic({
+    const characteristic = new Characteristic({
       secure: mockSecure
     });
 
@@ -57,7 +57,7 @@ describe('Characteristic', function() {
   });
 
   it('should create with value option', function() {
-    var characteristic = new Characteristic({
+    const characteristic = new Characteristic({
       properties: ['read'],
       value: mockValue
     });
@@ -67,7 +67,7 @@ describe('Characteristic', function() {
 
   it('should not create with value option and non-read properties', function() {
     (function(){
-      var characteristic = new Characteristic({
+      const characteristic = new Characteristic({
         properties: ['write'],
         value: mockValue
       });
@@ -75,7 +75,7 @@ describe('Characteristic', function() {
   });
 
   it('should create with descriptors option', function() {
-    var characteristic = new Characteristic({
+    const characteristic = new Characteristic({
       descriptors: mockDescriptors
     });
 
@@ -83,7 +83,7 @@ describe('Characteristic', function() {
   });
 
   it('should create with onReadRequest option', function() {
-    var characteristic = new Characteristic({
+    const characteristic = new Characteristic({
       onReadRequest: mockOnReadRequest
     });
 
@@ -91,7 +91,7 @@ describe('Characteristic', function() {
   });
 
   it('should create with onWriteRequest option', function() {
-    var characteristic = new Characteristic({
+    const characteristic = new Characteristic({
       onWriteRequest: mockOnWriteRequest
     });
 
@@ -99,7 +99,7 @@ describe('Characteristic', function() {
   });
 
   it('should create with onSubscribe option', function() {
-    var characteristic = new Characteristic({
+    const characteristic = new Characteristic({
       onSubscribe: mockOnSubscribe
     });
 
@@ -107,7 +107,7 @@ describe('Characteristic', function() {
   });
 
   it('should create with onUnsubscribe option', function() {
-    var characteristic = new Characteristic({
+    const characteristic = new Characteristic({
       onUnsubscribe: mockOnUnsubscribe
     });
 
@@ -115,23 +115,23 @@ describe('Characteristic', function() {
   });
 
   it('should create with onNotify option', function() {
-    var characteristic = new Characteristic({
+    const characteristic = new Characteristic({
       onNotify: mockOnNotify
     });
 
     characteristic.onNotify.should.equal(mockOnNotify);
   });
 
-    it('should create with onIndicate option', function() {
-    var characteristic = new Characteristic({
-      onIndicate: mockOnIndicate
-    });
+  it('should create with onIndicate option', function() {
+    const characteristic = new Characteristic({
+    onIndicate: mockOnIndicate
+  });
 
     characteristic.onIndicate.should.equal(mockOnIndicate);
   });
 
   it('should toString', function() {
-    var characteristic = new Characteristic({
+    const characteristic = new Characteristic({
       uuid: mockUuid
     });
 
@@ -139,7 +139,7 @@ describe('Characteristic', function() {
   });
 
   it('should handle read request', function(done) {
-    var characteristic = new Characteristic({});
+    const characteristic = new Characteristic({});
 
     characteristic.emit('readRequest', 0, function(result, data) {
       result.should.equal(0x0e);
@@ -150,7 +150,7 @@ describe('Characteristic', function() {
   });
 
   it('should handle write request', function(done) {
-    var characteristic = new Characteristic({});
+    const characteristic = new Characteristic({});
 
     characteristic.emit('writeRequest', Buffer.alloc(0), 0, false, function(result) {
       result.should.equal(0x0e);
@@ -160,7 +160,7 @@ describe('Characteristic', function() {
   });
 
   it('should handle unsubscribe', function() {
-    var characteristic = new Characteristic({});
+    const characteristic = new Characteristic({});
 
     characteristic.maxValueSize = mockMaxValueSize;
     characteristic.updateValueCallback = mockUpdateValueCallback;

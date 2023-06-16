@@ -5,11 +5,11 @@ var should = require('should');
 var PrimaryService = require('../lib/primary-service');
 
 describe('PrimaryService', function() {
-  var mockUuid = 'mockuuid';
-  var mockCharacteristics = [{}, {}, {}];
+  const mockUuid = 'mockuuid';
+  const mockCharacteristics = [{}, {}, {}];
 
   it('should create with uuid option', function() {
-    var service = new PrimaryService({
+    const service = new PrimaryService({
       uuid: mockUuid
     });
 
@@ -20,7 +20,7 @@ describe('PrimaryService', function() {
   });
 
   it('should create with characteristics option', function() {
-    var service = new PrimaryService({
+    const service = new PrimaryService({
       characteristics: mockCharacteristics
     });
 
@@ -28,7 +28,7 @@ describe('PrimaryService', function() {
   });
 
   it('should toString', function() {
-    var service = new PrimaryService({
+    const service = new PrimaryService({
       uuid: mockUuid
     });
 
