@@ -53,6 +53,7 @@ class LongDynamicReadOnlyCharacteristic extends BlenoCharacteristic {
       uuid: 'fffffffffffffffffffffffffffffff3',
       properties: ['read']
     });
+  }
 
   onReadRequest(offset, callback) {
     let result = this.RESULT_SUCCESS;
