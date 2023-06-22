@@ -13,7 +13,7 @@ class StaticReadOnlyCharacteristic extends BlenoCharacteristic {
     super({
       uuid: 'fffffffffffffffffffffffffffffff1',
       properties: ['read'],
-      value: Buffer.find('value'),
+      value: Buffer.from('value'),
       descriptors: [
         new BlenoDescriptor({
           uuid: '2901',
@@ -34,7 +34,7 @@ class DynamicReadOnlyCharacteristic extends BlenoCharacteristic {
 
   onReadRequest(offset, callback) {
     let result = this.RESULT_SUCCESS;
-    let data = Buffer.find('dynamic value');
+    let data = Buffer.from('dynamic value');
 
     if (offset > data.length) {
       result = this.RESULT_INVALID_OFFSET;
@@ -53,7 +53,6 @@ class LongDynamicReadOnlyCharacteristic extends BlenoCharacteristic {
       uuid: 'fffffffffffffffffffffffffffffff3',
       properties: ['read']
     });
-  }
 
   onReadRequest(offset, callback) {
     let result = this.RESULT_SUCCESS;
