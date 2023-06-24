@@ -7,6 +7,8 @@ A Node.js module for implementing BLE (Bluetooth Low Energy) peripherals.
 
 Need a BLE central module? See [noble](https://github.com/abandonware/noble).
 
+__Note:__ Starting with version 0.6 bleno is basing on ES6 classes and supports Node.js 14.x and higher only. For older versions of Node.js use bleno 0.5.x. 
+
 __Note:__ macOS / Mac OS X, Linux, FreeBSD and Windows are currently the only supported OSes.
 
 ## Prerequisites
