@@ -4,7 +4,7 @@
   "description": "A Node.js module for implementing BLE (Bluetooth Low Energy) peripherals",
   "main": "index.js",
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
   "os": [
     "darwin",
